@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Create Daily Journal{% endblock %}
+
+{% block content %}
+<div class="task card-wrapper">
+    {% if update %}
+        <form method="POST" action="{% url 'journal-delete' journal.pk %}">
+            {% csrf_token %}
+            <button class="task__delete">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </form>
+        <h1>Edit Journal</h1>
+    {% else %}
+        <h1>Create Daily Journal</h1>
+    {% endif %}
+
+    <form method="POST">
+        <div class="errors">
+            {{ form.errors }}
+        </div>
+        {% csrf_token %}
+
+        <label>{{ form.title.label }}</label>
+        {% render_field form.title required="true" class+="form-control" %}
+
+        <label>{{ form.quote.label }}</label>
+        {% render_field form.quote rows="2" class+="form-control" %}
+
+        <label>{{ form.grateful_for.label }}</label>
+        {% render_field form.grateful_for rows="2" class+="form-control" %}
+
+        <label>{{ form.today_view.label }}</label>
+        {% render_field form.today_view rows="2" class+="form-control" %}
+
+        <label>{{ form.today_affrimation.label }}</label>
+        {% render_field form.today_affrimation rows="2" class+="form-control" %}
+
+        <button class="btn btn-success btn-center btn-fullwidth" type="submit">
+            {% if update %}
+                Save
+            {% else %}
+                Add
+            {% endif %}
+        </button>
+    </form>
+</div>
+{% endblock %}

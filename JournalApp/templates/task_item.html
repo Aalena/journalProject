@@ -1,0 +1,21 @@
+<li class="task__item">
+    <a href="{% url 'journal-edit' task.pk %}">
+        <h3 class="title {% if task.is_complete %}complete{% endif %}">
+            {{ task.title }}
+        </h3>
+    </a>
+    <p class="description">
+        QUOTE : {{ task.quote }}
+    </p>
+
+{#    <form method="POST" action="{% url 'journal-add' %}">#}
+{#        {% csrf_token %}#}
+{#        <button type="submit" class="task-complete">#}
+{#            {% if task.is_complete %}#}
+{#                <span class="glyphicon glyphicon glyphicon-ok-circle glyphicon-red"></span>#}
+{#            {% else %}#}
+{#                <span class="glyphicon glyphicon glyphicon-ok-circle glyphicon-blue"></span>#}
+{#            {% endif %}#}
+{#        </button>#}
+{#    </form>#}
+</li>

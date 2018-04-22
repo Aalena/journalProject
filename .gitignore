@@ -1,3 +1,4 @@
+#virtual env
 jvenv/
 .env
 .idea/
@@ -6,3 +7,6 @@ jvenv/
 __pycache__/
 *.py[cod]
 *$py.class
+
+# C extensions
+*.so
