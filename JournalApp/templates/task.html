@@ -8,6 +8,7 @@
     {% if update %}
         <form method="POST" action="{% url 'journal-delete' journal.pk %}">
             {% csrf_token %}
+            <a href="{% url 'journals' %}"><span class="glyphicon glyphicon-chevron-left"></span></a>
             <button class="task__delete">
                 <span class="glyphicon glyphicon-remove"></span>
             </button>
