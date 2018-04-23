@@ -20,6 +20,7 @@ from django.urls import path, include
 from JournalApp.views import TaskListView, NewTaskView, TaskView, DeleteTaskView
 from JournalRoot.views import Home, register
 from django.contrib.auth import views as auth_views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     # Home
@@ -36,6 +37,6 @@ urlpatterns = [
     path('delete/<int:task_id>', login_required(DeleteTaskView.as_view()), name='journal-delete'),
     path('api/', include('JournalApp.api.urls', namespace='api'), name='api'), # This is to include api URL. We need to be login as admin to perform CRUD operations
     path('admin/', admin.site.urls),
-]
+]+staticfiles_urlpatterns()
 
 
